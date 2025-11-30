@@ -4,13 +4,15 @@ services:
     name: trucker-profit-calculator
     env: node
     buildCommand: |
-      echo "Installing backend dependencies..."
-      cd backend && npm install
-      echo "Installing frontend dependencies..."
-      cd ../frontend && npm install
-      echo "Building frontend with Vite..."
-      npx vite build
-      echo "Build completed!"
+      echo "==> Installing backend dependencies"
+      cd backend && npm install --production
+      echo "==> Installing frontend dependencies (including build tools)"
+      cd ../frontend && npm install --include=dev
+      echo "==> Building frontend"
+      npm run build
+      echo "==> Verifying dist folder"
+      ls -la dist/
+      echo "✅ Build completed!"
     startCommand: cd backend && node server.js
     envVars:
       - key: NODE_ENV

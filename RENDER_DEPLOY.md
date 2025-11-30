@@ -25,7 +25,7 @@ Este proyecto está configurado para desplegarse en Render.com con backend y fro
    **Build & Deploy:**
    - **Build Command:**
      ```bash
-     cd backend && npm install && cd ../frontend && npm install && npx vite build
+     cd backend && npm install --production && cd ../frontend && npm install --include=dev && npm run build
      ```
    
    - **Start Command:**
