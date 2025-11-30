@@ -5,11 +5,11 @@ services:
     env: node
     buildCommand: |
       echo "Installing backend dependencies..."
-      cd backend && npm ci --only=production
+      cd backend && npm install
       echo "Installing frontend dependencies..."
-      cd ../frontend && npm ci
-      echo "Building frontend..."
-      npm run build
+      cd ../frontend && npm install
+      echo "Building frontend with Vite..."
+      npx vite build
       echo "Build completed!"
     startCommand: cd backend && node server.js
     envVars:
