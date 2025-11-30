@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 # Build script for Render
 
-echo "Installing backend dependencies..."
+set -e  # Exit on error
+
+echo "==> Installing backend dependencies..."
 cd backend
-npm install
+npm ci --only=production
 
-echo "Installing frontend dependencies..."
+echo "==> Installing frontend dependencies..."
 cd ../frontend
-npm install
+npm ci
 
-echo "Building frontend..."
+echo "==> Building frontend with Vite..."
 npm run build
 
-echo "Build completed successfully!"
+echo "==> Verifying build output..."
+ls -la dist/
+
+echo "✅ Build completed successfully!"

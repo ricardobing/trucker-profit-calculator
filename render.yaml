@@ -4,8 +4,13 @@ services:
     name: trucker-profit-calculator
     env: node
     buildCommand: |
-      cd backend && npm install
-      cd ../frontend && npm install && npm run build
+      echo "Installing backend dependencies..."
+      cd backend && npm ci --only=production
+      echo "Installing frontend dependencies..."
+      cd ../frontend && npm ci
+      echo "Building frontend..."
+      npm run build
+      echo "Build completed!"
     startCommand: cd backend && node server.js
     envVars:
       - key: NODE_ENV
