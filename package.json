@@ -1,0 +1,13 @@
+{
+  "name": "trucker-profit-calculator",
+  "version": "1.0.0",
+  "description": "Trucker Profit Calculator - Full stack application",
+  "scripts": {
+    "start": "cd backend && node server.js",
+    "build": "cd frontend && npm install && npm run build",
+    "install-all": "cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": ["trucker", "calculator", "profit"],
+  "author": "",
+  "license": "MIT"
+}

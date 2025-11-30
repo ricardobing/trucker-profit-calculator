@@ -3,7 +3,9 @@ import CalculatorForm from './components/CalculatorForm';
 import ResultsPanel from './components/ResultsPanel';
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// En producción usa la misma URL del servidor, en desarrollo usa localhost
+const API_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.MODE === 'production' ? '/api' : 'http://localhost:5000/api');
 
 function App() {
   const [results, setResults] = useState(null);

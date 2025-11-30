@@ -1,0 +1,14 @@
+services:
+  # Web Service (Backend + Frontend)
+  - type: web
+    name: trucker-profit-calculator
+    env: node
+    buildCommand: |
+      cd backend && npm install
+      cd ../frontend && npm install && npm run build
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        fromGroup: web
